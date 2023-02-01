@@ -1,0 +1,43 @@
+let success = false
+
+function sampleFunc() {
+    console.log("sampleFunc Start");    
+}
+const a = () => {}
+const samplePromise = new Promise((resolve, reject) => {
+                    //동기 
+                    console.log("Promise 실행");
+                    setTimeout(() => {
+                        success = true
+                        console.log("success: ", success);
+                        resolve(success)
+                    }, 0)
+                    console.log("Promise 실행");
+                    })
+
+console.log('중간 단계');
+sampleFunc();
+
+samplePromise.then((result) => {
+    console.log("result: ", result);
+})
+// .then((result) => {
+//     return '1'
+// }).catch((error) => {
+    
+// }).then((result) => {
+//   console.log("result2: ", result);
+// }).catch((error) => {
+    
+// }).then((result) => {
+//   console.log("result3: ", result);
+//   return Promise.resolve('1')
+// }).catch((error) => {
+    
+// }).then((result) => {
+//   console.log("result4: ", result);
+// }).catch((error) => {
+    
+// }).finally(() => {
+
+// })

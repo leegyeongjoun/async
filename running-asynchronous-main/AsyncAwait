@@ -1,0 +1,42 @@
+let success = false
+
+async function sampleAsync() {
+    console.log("동기 부분");
+    const a = await 'a'; 
+    success = false;
+    console.log("succes: ", success)
+    console.log("a: ", a);
+    await null;
+
+    const b = await Promise.resolve('a');
+    console.log("b: ", b);
+    return { a, b }  
+}
+
+/** sampleAsynce => Promise 
+  Promise.resolve(1)
+  .then((a) => {
+    console.log("a: ", a);
+    return null;
+   })
+   .then(() => {
+    return Promise.resolve('a)
+   })
+   .then((a) => {
+    console.log("b: ", a);
+    return a 
+   })
+ */
+
+sampleAsync()
+.then((result) => {
+    console.log("result: ", result);
+    return result.a
+}).then((result2) => {
+    console.log("result2: ", result2);
+});
+
+success = true
+console.log("succes: ", success)
+
+console.log("동기 부분 확인해봐. ");
